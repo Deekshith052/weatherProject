@@ -1,0 +1,32 @@
+
+<%- include('partials/header') %>
+
+
+    <% data %>
+    <p>this is the report</p>
+    <p>teperature: <%= data[0].temp %></p>
+    <p>description: <%= data[0].desc %></p>
+    <p>humidity: <%= data[0].humid %></p>
+    <p>windspeed: <%= data[0].wind %></p>
+
+    <table >
+        <tr>
+            <th>date</th>
+            <th>description</th>
+            <th>temperature(in celsius)</th>
+            <th>humidity(%)</th>
+            <th>windspeed(in meter/sec)</th>
+        </tr>
+        <% for(var i=1;i<data.length;i++){%>
+            <tr>
+                <td><%=data[i].date%></td>
+                <td><%=data[i].desc%></td>
+                <td><%=data[i].temp%></td>
+                <td><%=data[i].humid%></td>
+                <td><%=data[i].wind%></td>
+            </tr>
+        <% } %>
+    </table>
+</body>
+
+<%- include('partials/footer') %>

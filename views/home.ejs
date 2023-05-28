@@ -1,0 +1,30 @@
+<%- include('partials/header') %>
+
+    <form action="/" method="post">
+        <label for="city">Enter city name</label>
+        <input type="text" id="city" name="cityname">
+        <input type="checkbox" onclick="getLocation()" id="location" name="location" >current location
+        <button type="submit">submit</button>
+    </form>
+</body>
+<script>
+    var check=document.getElementById("location")
+    var loc=[]
+    function getLocation(){
+        if(navigator.geolocation){
+            navigator.geolocation.getCurrentPosition(getPosition)
+        }
+        else{
+            loc[0]="none"
+            loc[1]="none"
+            check.value=loc
+        }
+    }
+    function getPosition(position){
+        loc[0]=position.coords.latitude;
+        loc[1] = position.coords.longitude;
+        check.value=loc
+    }
+</script>
+<%- include('partials/footer') %>
+
